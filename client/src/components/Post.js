@@ -28,7 +28,7 @@ const Post = ({index}) => {
             formData.append('picture', image);
             dispatch(uploadPostPicture({ id, formData }));
         }else{
-            alert('Put appropriate image address')
+            alert('Put appropriate image address Or you cant update this post')
         }
     };
     const toggleComments = () => {
