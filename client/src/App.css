@@ -130,3 +130,7 @@ body {
     margin: 0 auto;
     max-height: 300px;
 }
+.comment button {
+    padding: 5px 10px;
+    font-size: 12px;
+}
