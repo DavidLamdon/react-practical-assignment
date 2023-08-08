@@ -68,32 +68,36 @@ const Post = ({index}) => {
         }
     }
     return (
-        <div>
-            <h1>Title: {title}</h1>
-            <h2>Author: {username}</h2>
-            <h2>Votes: {likes&&dislikes?likes.length - dislikes.length >= 0 ? likes.length - dislikes.length : 0:0}</h2>
-            <h2>TimeStamp: {date}</h2>
-            <img src={imageSrc?imageSrc:image} alt={title} />
-            <button onClick={addLike}>Like</button>
-            <button onClick={addDislike}>Dislike</button>
-            <button onClick={toggleUploadPicture}>Show Edit&Update</button>
-            <button onClick={onClickAddComment}>Add Comment</button>
-            <button onClick={onClickDeletePost}>Delete Post</button>
-            <button onClick={toggleComments}>
-                {showComments ? 'Hide Comments' : 'Show Comments'}
-            </button>
+        <div className="post-container">
+            <h1 className="post-title">Title: {title}</h1>
+            <h2 className="post-author">Author: {username}</h2>
+            <h2 className="post-votes">
+                Votes: {likes && dislikes ? likes.length - dislikes.length >= 0 ? likes.length - dislikes.length : 0 : 0}
+            </h2>
+            <h2 className="post-timestamp">TimeStamp: {date}</h2>
+            <img className="post-image" src={imageSrc ? imageSrc : image} alt={title} />
+            <div className="post-buttons">
+                <button className="btn btn-primary" onClick={addLike}>Like</button>
+                <button className="btn btn-danger" onClick={addDislike}>Dislike</button>
+                <button className="btn btn-info" onClick={toggleUploadPicture}>Edit & Update</button>
+                <button className="btn btn-success" onClick={onClickAddComment}>Add Comment</button>
+                <button className="btn btn-danger" onClick={onClickDeletePost}>Delete Post</button>
+                <button className="btn btn-secondary" onClick={toggleComments}>
+                    {showComments ? 'Hide Comments' : 'Show Comments'}
+                </button>
+            </div>
             {showUploadPicture && (
-                <div>
+                <div className="post-upload-section">
                     <input type="file" accept="image/*" onChange={handleImageUpload} />
-                    <button onClick={handleImageSubmit}>Upload Picture</button>
-                    <button onClick={onClickUpdatePost}>Edit</button>
+                    <button className="btn btn-success" onClick={handleImageSubmit}>Upload Picture</button>
+                    <button className="btn btn-warning" onClick={onClickUpdatePost}>Edit</button>
                 </div>
-                )}
+            )}
             {showComments && comments && (
-                <div>
+                <div className="post-comments">
                     <h3>Comments:</h3>
                     {comments.map((comment) => (
-                        <Comment key={comment.id} comment={comment}/>
+                        <Comment key={comment.id} comment={comment} />
                     ))}
                 </div>
             )}

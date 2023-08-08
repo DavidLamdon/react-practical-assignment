@@ -29,17 +29,36 @@ const Comment = ({ comment }) => {
         }
     }
     return (
-        <div>
-            <p>Author: {username}</p>
-            <p>Title: {text}</p>
-            <p>Votes: {likes.length - dislikes.length >= 0 ? likes.length - dislikes.length : 0}</p>
-            <p>Date: {date}</p>
-            <button onClick={addLike}>Like</button>
-            <button onClick={addDislike}>Dislike</button>
-            <button onClick={onClickUpdateComment}>Edit</button>
-            <button onClick={onClickDelete}>Delete</button>
+        <div className="comment-container">
+            <div className="comment-author">{username}</div>
+            <div className="comment-text">{text}</div>
+            <div className="comment-info">
+                <span className="comment-votes">
+                    Votes: {likes.length - dislikes.length >= 0 ? likes.length - dislikes.length : 0}
+                </span>
+                <span className="comment-date">{date}</span>
+            </div>
+            <div className="comment-buttons">
+                <button className="btn btn-sm btn-primary" onClick={addLike}>
+                    Like
+                </button>
+                <button className="btn btn-sm btn-danger" onClick={addDislike}>
+                    Dislike
+                </button>
+                {user === username && (
+                    <React.Fragment>
+                        <button className="btn btn-sm btn-warning" onClick={onClickUpdateComment}>
+                            Edit
+                        </button>
+                        <button className="btn btn-sm btn-danger" onClick={onClickDelete}>
+                            Delete
+                        </button>
+                    </React.Fragment>
+                )}
+            </div>
         </div>
     );
 };
+
 
 export default Comment;
